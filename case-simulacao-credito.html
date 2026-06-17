@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulação de Crédito — Case · Rafael Nassif</title>
+  <meta name="description"
+    content="Case UX/UI: como transformei um chatbot com 80% de erro em uma jornada guiada de qualificação de crédito para uma agência de fomento estadual — sem persona, sem testes e com uma semana de prazo." />
+  <meta property="og:title" content="Simulação de Crédito — Case de UX/UI · Rafael Nassif" />
+  <meta property="og:description"
+    content="Reprojetando a simulação de crédito de uma agência de fomento: de um chatbot com 80% de erro a uma jornada de qualificação progressiva." />
+  <meta property="og:type" content="article" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff4d00'/%3E%3Ctext x='32' y='43' font-family='Arial Black, sans-serif' font-size='30' font-weight='900' text-anchor='middle' fill='%230d0b09'%3ERN%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Fragment+Mono:ital@0;1&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="stylesheet" href="css/case.css?v=1" />
+  <script>
+    document.documentElement.classList.add('js');
+    if (new URLSearchParams(location.search).get('motion') === 'off') {
+      document.documentElement.classList.add('motion-off');
+    }
+  </script>
+</head>
+
+<body class="case-page">
+
+  <!-- barra de progresso de leitura -->
+  <div class="reading-bar" aria-hidden="true"><span data-reading-bar></span></div>
+
+  <a class="skip-link" href="#case-conteudo">Pular para o conteúdo</a>
+
+  <!-- cursor -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+  </div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <a href="index.html" class="header__logo" data-magnetic aria-label="Voltar ao início">
+      <span class="header__logo-mark">RN</span><span class="header__logo-c">©26</span>
+    </a>
+
+    <a href="index.html#cases" class="case-back label" data-magnetic>
+      <span class="case-back__arrow" aria-hidden="true">←</span> voltar aos cases
+    </a>
+
+    <div class="header__meta label">
+      <span class="header__dot" aria-hidden="true"></span>
+      <span>case 01&nbsp;·&nbsp;<span data-clock>--:--</span></span>
+    </div>
+  </header>
+
+  <main id="case-conteudo">
+
+    <!-- ============ HERO ============ -->
+    <header class="chero">
+      <div class="chero__grain" aria-hidden="true"></div>
+
+      <p class="chero__crumb label" data-hero>
+        <a href="index.html#cases">Cases</a>
+        <span aria-hidden="true">/</span>
+        <span>01 — Fintech &amp; Fomento</span>
+      </p>
+
+      <h1 class="chero__title" data-hero>
+        Simulação<br />de Crédito
+      </h1>
+
+      <p class="chero__lead" data-hero>
+        Como transformei um <strong>chatbot com 80% de erro</strong> em uma jornada guiada de
+        qualificação — sem persona, sem testes e com uma semana de prazo.
+      </p>
+
+      <dl class="chero__meta" data-hero>
+        <div class="chero__meta-item">
+          <dt class="label">Ano</dt>
+          <dd>2025</dd>
+        </div>
+        <div class="chero__meta-item">
+          <dt class="label">Papel</dt>
+          <dd>UX/UI Designer · Squad ágil</dd>
+        </div>
+        <div class="chero__meta-item">
+          <dt class="label">Cliente</dt>
+          <dd>Agência de fomento estadual</dd>
+        </div>
+        <div class="chero__meta-item">
+          <dt class="label">Stack</dt>
+          <dd>Figma · Salesforce (LWC)</dd>
+        </div>
+      </dl>
+    </header>
+
+    <!-- ============ STAT HOOK ============ -->
+    <section class="cstat" aria-label="Dado de impacto">
+      <div class="cstat__big" data-reveal>
+        <span class="cstat__num"><span data-counter="80">0</span>%</span>
+        <span class="cstat__cap label">das simulações terminavam<br />com o resultado errado</span>
+      </div>
+      <p class="cstat__note" data-reveal>
+        Oito em cada dez pessoas escolhiam a linha de crédito equivocada — ou eram MEIs simulando
+        um produto que não era para elas. Cada erro virava retrabalho manual de um especialista.
+      </p>
+    </section>
+
+    <!-- ============ 01 · O DESAFIO ============ -->
+    <section class="csection" id="desafio">
+      <header class="sec-head">
+        <span class="sec-head__index label">01</span>
+        <h2 class="sec-head__title">O desafio</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// o gancho</span>
+      </header>
+
+      <div class="cprose" data-reveal>
+        <p class="cprose__lead">
+          A agência é um banco de fomento estadual, que oferece linhas de crédito para empresas
+          e municípios. Meu desafio era estancar o erro reprojetando a jornada de simulação.
+        </p>
+        <p>
+          O complicador estava nas restrições: <strong>uma semana de prazo, nenhuma persona e um
+          cliente que recusava testes de usabilidade.</strong> Foi um projeto definido menos pelo
+          que eu tinha e mais pelo que faltava.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 02 · O PROBLEMA ============ -->
+    <section class="csection" id="problema">
+      <header class="sec-head">
+        <span class="sec-head__index label">02</span>
+        <h2 class="sec-head__title">O problema</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// duas camadas</span>
+      </header>
+
+      <div class="cduo">
+        <article class="cduo__card" data-reveal>
+          <span class="cduo__tag label">para o usuário</span>
+          <p>
+            A simulação por chatbot não ajudava a pessoa a chegar na linha certa. Ela decidia sem
+            entender as opções — e o vocabulário de crédito (<em>IPCA, IOF, carência, amortização,
+            cobertura</em>) é uma barreira real para quem não é do mercado financeiro.
+          </p>
+          <p class="cduo__kick">A experiência prometia autonomia e entregava um resultado inútil.</p>
+        </article>
+
+        <article class="cduo__card" data-reveal>
+          <span class="cduo__tag label">para o negócio</span>
+          <p>
+            Cada simulação errada que virava intenção real de contratação tinha que ser refeita à
+            mão por um especialista. Retrabalho operacional puro — tempo de equipe gasto para
+            corrigir algo que a interface deveria ter evitado na origem.
+          </p>
+          <p class="cduo__kick">Em escala, isso é custo recorrente e gargalo de atendimento.</p>
+        </article>
+      </div>
+
+      <blockquote class="cquote" data-reveal>
+        <span class="cquote__mark" aria-hidden="true">“</span>
+        Minha hipótese central: o formato chatbot era parte do problema, e o erro precisava ser
+        <strong>barrado na origem — não corrigido no fim.</strong>
+      </blockquote>
+    </section>
+
+    <!-- ============ 03 · DISCOVERY ============ -->
+    <section class="csection" id="discovery">
+      <header class="sec-head">
+        <span class="sec-head__index label">03</span>
+        <h2 class="sec-head__title">Discovery comprimido</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// 1 semana</span>
+      </header>
+
+      <p class="csection__intro" data-reveal>
+        Sem acesso a usuários reais e sem tempo para pesquisa primária, montei a investigação possível.
+      </p>
+
+      <ol class="cmethod">
+        <li class="cmethod__item" data-reveal>
+          <span class="cmethod__n label">a</span>
+          <div class="cmethod__body">
+            <h3>Lastro em dados de mercado</h3>
+            <p>
+              Busquei evidência pública para sustentar a hipótese de que o chatbot atrapalhava.
+              90% dos consumidores preferem atendimento humano quando podem escolher (Opinion Box);
+              44% se frustram quando não conseguem escapar do atendimento automatizado (Forrester).
+              Numa decisão de crédito — alta carga, alto risco percebido — empurrar o usuário para
+              um bot era ampliar a chance de erro e abandono.
+            </p>
+          </div>
+        </li>
+        <li class="cmethod__item" data-reveal>
+          <span class="cmethod__n label">b</span>
+          <div class="cmethod__body">
+            <h3>Desk research de concorrentes</h3>
+            <p>
+              Analisei como outras instituições estruturavam a simulação de crédito: onde colocavam
+              os filtros, como apresentavam as linhas, em que momento qualificavam a elegibilidade.
+              Um repertório de padrões consolidados para substituir o chatbot.
+            </p>
+          </div>
+        </li>
+        <li class="cmethod__item" data-reveal>
+          <span class="cmethod__n label">c</span>
+          <div class="cmethod__body">
+            <h3>Tradução da planilha em arquitetura</h3>
+            <p>
+              A planilha de campos de filtro que recebi virou a espinha dorsal do fluxo. Reorganizei
+              esses campos numa <strong>sequência de qualificação progressiva</strong>, em que cada
+              etapa estreita o funil antes de deixar o usuário avançar.
+            </p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ 04 · A SOLUÇÃO ============ -->
+    <section class="csection" id="solucao">
+      <header class="sec-head">
+        <span class="sec-head__index label">04</span>
+        <h2 class="sec-head__title">A solução</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// qualificar antes de simular</span>
+      </header>
+
+      <p class="csection__intro" data-reveal>
+        Em vez de um chatbot que coletava respostas soltas, desenhei um fluxo linear de qualificação
+        em camadas. Cada etapa filtra antes de liberar a próxima.
+      </p>
+
+      <ol class="cflow">
+        <li class="cflow__step" data-reveal>
+          <span class="cflow__n">01</span>
+          <h3 class="cflow__title">Finalidade do crédito</h3>
+          <p>Investir no negócio, em inovação ou em sustentabilidade. Já começa educando sobre o tipo de uso e descartando caminhos irrelevantes.</p>
+        </li>
+        <li class="cflow__step" data-reveal>
+          <span class="cflow__n">02</span>
+          <h3 class="cflow__title">Segmentação</h3>
+          <p>Administrada por mulheres, regiões prioritárias de fomento, produtor rural. Toggles que capturam critérios e destravam linhas específicas.</p>
+        </li>
+        <li class="cflow__step cflow__step--key" data-reveal>
+          <span class="cflow__n">03</span>
+          <h3 class="cflow__title">Faturamento anual <span class="cflow__badge label">elegibilidade</span></h3>
+          <p>A etapa-chave. É aqui que o MEI é identificado e <strong>redirecionado para a linha de microcrédito adequada</strong> — em vez de seguir num fluxo que não era para ele. O erro estrutural deixa de acontecer na origem.</p>
+        </li>
+        <li class="cflow__step" data-reveal>
+          <span class="cflow__n">04</span>
+          <h3 class="cflow__title">Dados da simulação</h3>
+          <p>Valor, prazo e CEP com autocomplete. Tratamento de exceção: produtor rural cai numa variação do formulário que pede CPF em vez de CNPJ.</p>
+        </li>
+        <li class="cflow__step" data-reveal>
+          <span class="cflow__n">05</span>
+          <h3 class="cflow__title">Resultado</h3>
+          <p>O comparativo de linhas elegíveis — o destaque técnico do projeto, detalhado a seguir.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ 05 · DESTAQUE TÉCNICO ============ -->
+    <section class="csection csection--feature" id="comparativo">
+      <header class="sec-head">
+        <span class="sec-head__index label">05</span>
+        <h2 class="sec-head__title">Destaque técnico</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// comparativo de elegíveis</span>
+      </header>
+
+      <p class="csection__intro" data-reveal>
+        O resultado foi onde concentrei a maior carga de design — é o momento em que o erro de escolha
+        historicamente acontecia. Em vez de devolver uma única linha, entreguei um
+        <strong>comparativo lado a lado</strong>, com os mesmos parâmetros em cada card e a
+        elegibilidade visível na própria decisão.
+      </p>
+
+      <!-- mockup do comparativo -->
+      <div class="compare" data-reveal aria-hidden="true">
+        <article class="compare__card">
+          <header class="compare__head">
+            <span class="compare__name">Microcrédito</span>
+            <span class="compare__seal">✓ Micro</span>
+          </header>
+          <dl class="compare__params">
+            <div><dt>prazo</dt><dd>48 meses</dd></div>
+            <div><dt>carência</dt><dd>6 meses</dd></div>
+            <div><dt>taxa</dt><dd>1,2% a.m.</dd></div>
+            <div><dt>+ IPCA</dt><dd>sim</dd></div>
+            <div class="compare__total"><dt>total</dt><dd>R$ 24.8k</dd></div>
+          </dl>
+        </article>
+
+        <article class="compare__card compare__card--active">
+          <header class="compare__head">
+            <span class="compare__name">Linha Inovação</span>
+            <span class="compare__seal">✓ Micro · Pequena</span>
+          </header>
+          <dl class="compare__params">
+            <div><dt>prazo</dt><dd>60 meses</dd></div>
+            <div><dt>carência</dt><dd>12 meses</dd></div>
+            <div><dt>taxa</dt><dd>0,9% a.m.</dd></div>
+            <div><dt>+ IPCA</dt><dd>sim</dd></div>
+            <div class="compare__total"><dt>total</dt><dd>R$ 31.2k</dd></div>
+          </dl>
+        </article>
+
+        <article class="compare__card">
+          <header class="compare__head">
+            <span class="compare__name">Linha Expansão</span>
+            <span class="compare__seal">✓ Pequena · Média</span>
+          </header>
+          <dl class="compare__params">
+            <div><dt>prazo</dt><dd>72 meses</dd></div>
+            <div><dt>carência</dt><dd>18 meses</dd></div>
+            <div><dt>taxa</dt><dd>0,8% a.m.</dd></div>
+            <div><dt>+ IPCA</dt><dd>sim</dd></div>
+            <div class="compare__total"><dt>total</dt><dd>R$ 58.0k</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="compare__caption label" data-reveal>fig. 01 — comparativo de linhas, parâmetros simétricos + selo de elegibilidade</p>
+
+      <div class="cprose" data-reveal>
+        <p>
+          A estrutura ataca a causa raiz de duas formas. Primeiro, só mostra linhas para as quais o
+          usuário <strong>já foi qualificado</strong> nas etapas anteriores — então a escolha errada
+          fica mecanicamente mais difícil. Segundo, ao tornar elegibilidade e parâmetros comparáveis
+          num formato consistente, transfere para o usuário a capacidade de decidir com critério, em
+          vez de adivinhar.
+        </p>
+      </div>
+
+      <aside class="cnote" data-reveal>
+        <span class="cnote__tag label">decisão própria, não pedida pelo cliente</span>
+        <p>
+          Incluí na tela de detalhe um bloco de <strong>Resumo em linguagem simples</strong>,
+          traduzindo cada termo financeiro: o que é carência, o que é IPCA, o que significa cobertura
+          de 80%. A premissa: o usuário não escolhia errado por desatenção, e sim porque o vocabulário
+          do crédito é opaco. Reduzir a opacidade é reduzir o erro.
+        </p>
+      </aside>
+    </section>
+
+    <!-- ============ 06 · A DECISÃO DIFÍCIL ============ -->
+    <section class="csection" id="tradeoff">
+      <header class="sec-head">
+        <span class="sec-head__index label">06</span>
+        <h2 class="sec-head__title">A decisão difícil</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// abrir mão dos testes</span>
+      </header>
+
+      <div class="ctrade">
+        <div class="ctrade__row" data-reveal>
+          <span class="ctrade__k label">o que eu queria</span>
+          <p>Validar a jornada com usuários antes de entregar — o passo que transforma hipótese em decisão informada.</p>
+        </div>
+        <div class="ctrade__row" data-reveal>
+          <span class="ctrade__k label">a restrição</span>
+          <p>O cliente recusou os testes, dizendo que não faziam parte da cultura da empresa, e o prazo era de uma semana. Duas barreiras simultâneas, uma cultural e uma de tempo.</p>
+        </div>
+        <div class="ctrade__row" data-reveal>
+          <span class="ctrade__k label">a decisão</span>
+          <p>Entreguei a jornada baseada na tríade que eu tinha: os campos da planilha, os padrões da desk research e a evidência de mercado sobre aversão a chatbot e fricção do jargão.</p>
+        </div>
+        <div class="ctrade__row ctrade__row--risk" data-reveal>
+          <span class="ctrade__k label">o risco aceito</span>
+          <p>Entregar sem validação direta com o usuário final — risco que, com franqueza, eu absorvi sozinho em vez de torná-lo visível. Volto a isso na reflexão.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07 · RESTRIÇÃO TÉCNICA ============ -->
+    <section class="csection" id="restricao">
+      <header class="sec-head">
+        <span class="sec-head__index label">07</span>
+        <h2 class="sec-head__title">Restrição técnica</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// desenhar para o Salesforce</span>
+      </header>
+
+      <div class="cprose" data-reveal>
+        <p>
+          A jornada nasceu no Figma, mas vivia dentro do Salesforce — o que significou construir
+          diversos <strong>LWC (Lightning Web Components) personalizados</strong>. Cada elemento que
+          fugia do componente padrão exigia desenvolvimento sob medida e pesava no cronograma.
+          Decisões que pareciam triviais no Figma tinham custo real de engenharia, e priorizá-las
+          fazia parte do meu trabalho.
+        </p>
+        <p>
+          O maior atrito, porém, não foi técnico — foi de insumos. <strong>O cliente atuava como
+          Product Owner sem experiência na função.</strong> Boa parte do meu trabalho não foi
+          desenhar telas, foi preencher os vazios de definição que um P.O. experiente entregaria
+          pronto: fazer as perguntas certas, propor as regras ausentes (o redirecionamento do MEI, o
+          caso do produtor rural) e validar suposições no lugar de receber requisitos.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ 08 · RESULTADOS ============ -->
+    <section class="csection" id="resultados">
+      <header class="sec-head">
+        <span class="sec-head__index label">08</span>
+        <h2 class="sec-head__title">Resultados</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// honesto, sem inventar número</span>
+      </header>
+
+      <div class="cprose" data-reveal>
+        <p class="cprose__lead">
+          A entrega substituiu um fluxo conversacional propenso a erro por uma jornada de qualificação
+          que ataca as duas causas raízes: a escolha equivocada de linha (resolvida pelo comparativo)
+          e o acesso indevido do MEI (resolvido pelo redirecionamento na etapa de faturamento).
+        </p>
+        <p>
+          O valor mais concreto foi a <strong>mitigação rápida de um risco operacional recorrente sob
+          restrição severa</strong>. Sem persona, sem testes e com uma semana, traduzi um problema mal
+          definido numa solução estruturada e implementável — sustentada por evidência de mercado,
+          padrões do setor e decisões que enfrentavam a causa raiz, não o sintoma. O cliente validou a
+          jornada para desenvolvimento.
+        </p>
+      </div>
+
+      <aside class="cnote cnote--soft" data-reveal>
+        <span class="cnote__tag label">lacuna reconhecida</span>
+        <p>
+          A medição de impacto pós-implementação ficou em aberto: sem baseline estruturado e sem
+          cultura de teste do lado do cliente, não houve instrumentação para quantificar o ganho.
+          É a primeira coisa que eu estruturaria numa próxima fase.
+        </p>
+      </aside>
+    </section>
+
+    <!-- ============ 09 · REFLEXÃO ============ -->
+    <section class="csection" id="reflexao">
+      <header class="sec-head">
+        <span class="sec-head__index label">09</span>
+        <h2 class="sec-head__title">Reflexão</h2>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+        <span class="sec-head__meta label">// o que eu faria diferente</span>
+      </header>
+
+      <div class="cprose" data-reveal>
+        <p>
+          Eu faria os testes de usabilidade — mesmo com o prazo curto, mesmo que com cinco pessoas
+          próximas. Sessões de guerrilha custam pouco e teriam coberto os riscos críticos da jornada,
+          sobretudo a etapa de qualificação por faturamento, onde um rótulo mal compreendido pode
+          mandar o usuário para o caminho errado.
+        </p>
+        <p>
+          Mas o aprendizado mais importante não foi sobre teste — foi sobre <strong>comunicação de
+          risco</strong>. Eu absorvi sozinho o risco de entregar uma jornada não validada, em vez de
+          torná-lo explícito para o time e o cliente. Deveria tê-lo nomeado em voz alta: registrar que
+          avançávamos sem validação, qual era a exposição disso e como mitigaríamos.
+        </p>
+        <p class="cprose__kick">
+          Sob ambiguidade extrema, a expertise de UX se prova menos na tela bonita e mais na
+          capacidade de tomar boas decisões com pouca informação e de atacar a causa raiz. Mas decisão
+          de risco é decisão de time — e tornar o risco visível é parte do trabalho.
+        </p>
+      </div>
+
+      <p class="ctools label" data-reveal>
+        Figma · Salesforce (LWC) · desk research · benchmarking · arquitetura de informação ·
+        qualificação progressiva · design sob restrição de viabilidade técnica
+      </p>
+    </section>
+
+    <!-- ============ CTA / NAV ============ -->
+    <section class="cnav">
+      <a href="index.html#cases" class="cnav__back label" data-magnetic>
+        <span aria-hidden="true">←</span> todos os cases
+      </a>
+      <a href="index.html#contato" class="cnav__cta" data-magnetic>
+        <span class="cnav__cta-line"><span data-split-chars>VAMOS</span></span>
+        <span class="cnav__cta-line cnav__cta-line--accent"><span data-split-chars>CONVERSAR</span><span class="cnav__cta-arrow" aria-hidden="true">→</span></span>
+      </a>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <span class="label">© 2026 Rafael Nassif Crestani - Todos direitos reservados.</span>
+    <button class="footer__top label" data-to-top type="button">voltar ao topo ↑</button>
+  </footer>
+
+  <div class="toast label" data-toast aria-live="polite"></div>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="js/case.js?v=1" defer></script>
+</body>
+
+</html>

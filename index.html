@@ -20,7 +20,7 @@
     href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Fragment+Mono:ital@0;1&display=swap"
     rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=2" />
+  <link rel="stylesheet" href="css/styles.css?v=3" />
   <script>
     document.documentElement.classList.add('js');
     // Animações ligadas por padrão. ?motion=off entrega a versão estática
@@ -281,34 +281,32 @@
 
       <div class="cases__grid">
 
-        <!-- Case 1 — Minha Claro Residencial -->
-        <article class="case" data-reveal data-tilt>
-          <div class="case__visual case__visual--claro" aria-hidden="true">
-            <div class="case-art case-art--route">
-              <span class="case-art__phone">
-                <svg viewBox="0 0 120 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="2" y="2" width="116" height="216" rx="18" class="art-stroke" />
-                  <path d="M24 160 C 40 120, 70 150, 80 100 S 100 60, 96 48" class="art-route" />
-                  <circle cx="24" cy="160" r="6" class="art-dot-a" />
-                  <circle cx="96" cy="48" r="6" class="art-dot-b" />
-                  <circle cx="96" cy="48" r="12" class="art-pulse" />
-                </svg>
-              </span>
+        <!-- Case 1 — Simulação de Crédito (agência de fomento) · página interna -->
+        <article class="case case--link" data-reveal data-tilt>
+          <a class="case__stretch" href="case-simulacao-credito.html"
+            aria-label="Abrir case: Simulação de Crédito"></a>
+          <div class="case__visual case__visual--credit" aria-hidden="true">
+            <div class="case-art case-art--credit">
+              <div class="cc-card cc-card--a"><span class="cc-bar"></span><i></i><i></i></div>
+              <div class="cc-card cc-card--b"><span class="cc-seal">✓</span><span class="cc-bar"></span><i></i><i></i>
+              </div>
+              <div class="cc-card cc-card--c"><span class="cc-bar"></span><i></i><i></i></div>
             </div>
             <span class="case__num label">c.01</span>
           </div>
           <div class="case__info">
             <div class="case__top">
-              <h3 class="case__title">Minha Claro Residencial</h3>
-              <span class="case__year label">2022</span>
+              <h3 class="case__title">Simulação de Crédito</h3>
+              <span class="case__year label">2025</span>
             </div>
-            <p class="case__desc">Acompanhamento em tempo real do deslocamento do técnico até a casa do cliente — menos
-              ansiedade, menos ligações ao suporte.</p>
+            <p class="case__desc">De um chatbot com 80% de erro a uma jornada de qualificação progressiva — para uma
+              agência de fomento estadual.</p>
             <ul class="case__tags label">
-              <li>Mobile</li>
-              <li>Tempo real</li>
-              <li>Claro · Accurate</li>
+              <li>Fintech · Fomento</li>
+              <li>Salesforce</li>
+              <li>Jornada guiada</li>
             </ul>
+            <span class="case__more label">ver case completo <span aria-hidden="true">↗</span></span>
           </div>
         </article>
 

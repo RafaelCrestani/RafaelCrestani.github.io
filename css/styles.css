@@ -547,6 +547,49 @@ em { font-style: italic; }
 .art-clock { position: absolute; bottom: -28px; left: 0; font-family: var(--font-m); font-weight: 400; font-size: 0.58rem; letter-spacing: 0.12em; color: var(--muted); }
 .case-art--kanban { position: relative; }
 
+/* ---- arte case 01: comparativo de linhas de crédito ---- */
+.case-art--credit { display: flex; gap: 12px; align-items: flex-start; }
+.cc-card {
+  position: relative;
+  width: clamp(48px, 5vw, 60px); min-height: 112px;
+  background: #1d1712;
+  border: 1px solid rgba(240, 233, 221, 0.24);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+  padding: 9px; display: grid; gap: 7px; align-content: start;
+  transition: transform 0.45s var(--ease-out), border-color 0.45s;
+}
+.cc-card .cc-bar { height: 7px; width: 72%; background: rgba(240, 233, 221, 0.32); }
+.cc-card i { display: block; height: 4px; background: rgba(240, 233, 221, 0.18); }
+.cc-card i:last-child { width: 58%; }
+.cc-card--b {
+  border-color: rgba(255, 77, 0, 0.65);
+  background: rgba(255, 77, 0, 0.1);
+  transform: translateY(-10px);
+}
+.cc-card--b .cc-bar { background: var(--accent); }
+.cc-card--b i { background: rgba(255, 77, 0, 0.3); }
+.case:hover .cc-card--b { transform: translateY(-16px); }
+.case:hover .cc-card--a { transform: translateY(3px); }
+.case:hover .cc-card--c { transform: translateY(3px); }
+.cc-seal {
+  position: absolute; top: -12px; right: -10px; z-index: 2;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent); color: var(--dark);
+  display: grid; place-items: center; font-weight: 800; font-size: 0.85rem;
+  box-shadow: 0 6px 16px rgba(255, 77, 0, 0.45);
+}
+
+/* ---- card de case clicável (link p/ página interna) ---- */
+.case--link { cursor: pointer; }
+.case__stretch { position: absolute; inset: 0; z-index: 6; }
+.case__stretch:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+.case__more {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  color: var(--accent); margin-top: 1.1rem;
+  transition: gap 0.3s var(--ease-out);
+}
+.case--link:hover .case__more { gap: 0.85rem; }
+
 /* ============================================================
    SKILLS — tokens
    ============================================================ */
