@@ -20,7 +20,7 @@
     href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Fragment+Mono:ital@0;1&display=swap"
     rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/styles.css?v=8" />
   <script>
     document.documentElement.classList.add('js');
     // Animações ligadas por padrão. ?motion=off entrega a versão estática
@@ -179,14 +179,19 @@
           </p>
         </div>
 
-        <aside class="about__side" data-reveal>
-          <ul class="about__facts label">
-            <li><span>Localização</span><b>José Bonifácio — SP, Brasil</b></li>
-            <li><span>foco</span><b>Pesquisa · Produto · DS</b></li>
-            <li><span>método</span><b>Double Diamond · Design Thinking</b></li>
-            <li><span>idiomas</span><b>Português · Inglês (avançado)</b></li>
-          </ul>
-        </aside>
+        <figure class="about__portrait" data-reveal>
+          <div class="portrait">
+            <img src="img/rafael.jpg?v=1" alt="Retrato de Rafael Nassif Crestani" class="portrait__img"
+              loading="lazy" decoding="async" width="1200" height="1200" />
+            <span class="portrait__grain" aria-hidden="true"></span>
+            <span class="portrait__corner portrait__corner--tl" aria-hidden="true"></span>
+            <span class="portrait__corner portrait__corner--br" aria-hidden="true"></span>
+            <figcaption class="portrait__cap label">
+              <span class="portrait__star" aria-hidden="true">✦</span>
+              Rafael Nassif — José Bonifácio · SP
+            </figcaption>
+          </div>
+        </figure>
       </div>
 
       <div class="stats" role="list">
@@ -513,7 +518,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=4" defer></script>
+  <script src="js/main.js?v=6" defer></script>
 
   <script type="importmap">
     { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }

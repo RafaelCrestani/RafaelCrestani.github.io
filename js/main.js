@@ -513,6 +513,19 @@
         el.addEventListener("pointerleave", () => { rx(0); ry(0); });
       });
     }
+
+    /* ----- parallax interno do retrato (Sobre) ----- */
+    const portraitImg = document.querySelector(".portrait__img");
+    if (window.ScrollTrigger && !reduced && portraitImg) {
+      gsap.fromTo(
+        portraitImg,
+        { yPercent: -2.5, scale: 1.06 },
+        {
+          yPercent: 2.5, scale: 1.06, ease: "none",
+          scrollTrigger: { trigger: ".portrait", start: "top bottom", end: "bottom top", scrub: true },
+        }
+      );
+    }
   } catch (err) {
     console.error("[portfólio] falha na inicialização das animações:", err);
     forceVisible();

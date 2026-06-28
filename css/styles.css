@@ -398,17 +398,54 @@ em { font-style: italic; }
   display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
   gap: clamp(2rem, 5vw, 6rem);
   margin-bottom: clamp(3rem, 7vh, 5.5rem);
+  align-items: center;
 }
 .about__col p { color: var(--muted); max-width: 58ch; }
 .about__col p + p { margin-top: 1.2rem; }
 
-.about__facts { display: grid; gap: 0; border-top: 1px solid var(--line); }
-.about__facts li {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
-  padding: 0.85rem 0; border-bottom: 1px solid var(--line);
+/* ---- retrato no lugar do aside (coluna direita do Sobre) ---- */
+.about__portrait {
+  min-width: 0; margin: 0;
+  display: flex; align-items: center; justify-content: center;
 }
-.about__facts span { color: var(--accent); }
-.about__facts b { font-family: var(--font-d); font-weight: 500; color: var(--ink); font-size: 0.92rem; letter-spacing: 0.01em; text-transform: none; text-align: right; }
+.portrait {
+  position: relative;
+  width: 100%; max-width: 560px; aspect-ratio: 1 / 1; margin-inline: auto;
+  overflow: hidden; isolation: isolate;
+  border: 1px solid var(--line); background: #1d1712;
+}
+.portrait__img {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 18%;
+  filter: contrast(1.06) saturate(1.04);
+  will-change: transform;
+}
+/* grão sobre a foto — amarra à textura do site */
+.portrait__grain {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.09; mix-blend-mode: overlay;
+}
+/* fades: integram a foto ao fundo escuro + leve glow laranja da marca */
+.portrait::after {
+  content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(10, 8, 6, 0.92) 1%, rgba(10, 8, 6, 0.6) 13%, transparent 34%),
+    linear-gradient(to bottom, rgba(13, 11, 9, 0.22), transparent 18%),
+    radial-gradient(120% 80% at 82% 0%, rgba(255, 77, 0, 0.16), transparent 55%);
+}
+/* cantoneiras de registro */
+.portrait__corner { position: absolute; z-index: 4; width: 22px; height: 22px; border: 0 solid rgba(240, 233, 221, 0.85); }
+.portrait__corner--tl { top: 12px; left: 12px; border-top-width: 1.5px; border-left-width: 1.5px; }
+.portrait__corner--br { bottom: 12px; right: 12px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+.portrait__cap {
+  position: absolute; z-index: 5; left: 16px; right: 16px; bottom: 14px;
+  display: flex; align-items: center; gap: 0.55rem;
+  color: var(--ink);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.85);
+}
+.portrait__star { color: var(--accent); display: inline-block; animation: spin 14s linear infinite; }
 
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-left: 1px solid var(--line); }
 .stats__item { border-right: 1px solid var(--line); padding: 0.4rem clamp(1rem, 2.4vw, 2.2rem) 1rem; display: grid; gap: 0.5rem; align-content: start; }
@@ -734,6 +771,7 @@ em { font-style: italic; }
   .hero__frame-item--tr { display: none; }
 
   .about__grid { grid-template-columns: 1fr; }
+  .portrait { max-width: none; aspect-ratio: 4 / 5; }
   .stats { grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
   .stats__item { padding-top: 1rem; }
   .stats__item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
